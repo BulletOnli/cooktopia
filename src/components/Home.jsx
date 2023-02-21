@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../Context";
 import "../index.scss";
 
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import CategoryContainer from "./CategoryContainer";
+import SearchResults from "./SearchResults";
 
 const Home = () => {
-    const { categories } = useGlobalContext();
+    const { searchResult } = useGlobalContext();
 
     return (
         <div className="Home">
@@ -17,10 +18,8 @@ const Home = () => {
                 <SearchBar />
                 <h5>Search the recipe of your favorite meal</h5>
             </div>
-            <div className="category-section">
-                <h1>Categories</h1>
-                <CategoryContainer categories={categories} />
-            </div>
+            {searchResult.length ? <SearchResults /> : ""}
+            <CategoryContainer />
         </div>
     );
 };

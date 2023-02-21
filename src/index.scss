@@ -12,6 +12,7 @@ $secondary-color: #a3865b;
 #root {
     width: 100%;
     height: max-content;
+    min-height: 100vh;
     background-color: #f7f8f3;
     display: flex;
     flex-direction: column;
@@ -68,7 +69,8 @@ $secondary-color: #a3865b;
 
 .sub-header {
     width: 90%;
-    height: 18rem;
+    height: max-content;
+    min-height: 18rem;
     margin: 3rem 1rem;
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
         url(./assets/images/second-bg.jpg) no-repeat center;
@@ -79,6 +81,7 @@ $secondary-color: #a3865b;
     justify-content: center;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
     border-radius: 12px;
+    padding: 20px;
 
     h1 {
         font-size: 2.3rem;
@@ -130,18 +133,19 @@ $secondary-color: #a3865b;
 
     .CategoryContainer {
         width: 90%;
-        height: 50rem;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         align-items: center;
         justify-items: center;
+        row-gap: 2.5rem;
+        margin: 2rem 0;
 
         a {
             text-decoration: none;
             color: black;
         }
 
-        .Category {
+        .Meal-box {
             width: 13rem;
             height: 12rem;
             background-color: white;
@@ -172,7 +176,22 @@ $secondary-color: #a3865b;
     }
 }
 
+.SearchResults {
+    @extend .category-section;
+    height: max-content;
+
+    .SearchContainer {
+        @extend .CategoryContainer;
+
+        .Meal-box {
+            img {
+                object-fit: cover;
+                border-radius: 12px;
+            }
+        }
+    }
+}
+
 .FilteredCategory {
-    width: 100%;
-    height: 100vh;
+    @extend .Home;
 }
