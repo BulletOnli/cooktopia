@@ -10,6 +10,7 @@ const SearchBar = () => {
             onSubmit={(e) => {
                 e.preventDefault();
                 searchMeal(inputValue);
+                setInputValue("");
             }}
         >
             <input

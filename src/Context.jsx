@@ -7,35 +7,54 @@ const initialState = {
     categories: [],
     filteredCategory: [],
     searchResult: [],
+    mealDetails: [],
+    showResults: false,
     loading: false,
-    errorMessage: "Meal not Found, try again",
 };
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [inputValue, setInputValue] = useState("");
 
+    // Function to fetch Different Categories
     async function fetchCategories() {
         dispatch({ type: "LOADING" });
         const response = await fetch(
             "https://www.themealdb.com/api/json/v1/1/categories.php"
         );
         const data = await response.json();
-        dispatch({ type: "FETCH_DATA", payload: data.categories });
+        dispatch({ type: "FETCH_CATEGORY", payload: data.categories });
         dispatch({ type: "LOADING" });
     }
 
+    // Function to fetch Meal name from input value
     async function searchMeal(name) {
         const response = await fetch(
             `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
         );
         const data = await response.json();
-        // if error show error modal
-        if (data.meals === null) {
-            alert("Error");
-            return;
-        }
-        dispatch({ type: "SEARCH_DATA", payload: data.meals });
+        dispatch({ type: "SEARCH_MEAL", payload: data.meals });
+    }
+
+    // Function to fetch meals based of category
+    async function filterCategory(category) {
+        dispatch({ type: "LOADING" });
+        const response = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        );
+        const data = await response.json();
+        dispatch({ type: "FILTER_CATEGORY", payload: data.meals });
+        dispatch({ type: "LOADING" });
+    }
+
+    // Function to fetch specific meal details
+    async function fetchMealDetails(id) {
+        dispatch({ type: "LOADING" });
+        const response = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+        );
+        const data = await response.json();
+        dispatch({ type: "FETCH_MEAL_DETAILS", payload: data.meals });
     }
 
     useEffect(() => {
@@ -44,7 +63,15 @@ const AppProvider = ({ children }) => {
 
     return (
         <AppContext.Provider
-            value={{ ...state, inputValue, setInputValue, searchMeal }}
+            value={{
+                ...state,
+                inputValue,
+                setInputValue,
+                searchMeal,
+                dispatch,
+                filterCategory,
+                fetchMealDetails,
+            }}
         >
             {children}
         </AppContext.Provider>

@@ -2,15 +2,17 @@ import React from "react";
 import "./index.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home";
-import FilteredCategory from "./components/FilteredCategory";
+import Home from "./pages/Home";
+import Category from "./pages/Category";
+import Meal from "./pages/Meal";
 
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/category" element={<FilteredCategory />} />
+                <Route path="/category" element={<Category />} />
+                <Route path="/meal" element={<Meal />} />
             </Routes>
         </BrowserRouter>
     );
