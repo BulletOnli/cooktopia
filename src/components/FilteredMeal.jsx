@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../index.scss";
 import { useGlobalContext } from "../Context";
 
-const FilteredCategory = () => {
-    const { filteredCategory, fetchMealDetails, loading } = useGlobalContext();
+const FilteredMeal = () => {
+    const { filteredMeal, fetchMealDetails, loading } = useGlobalContext();
 
     if (loading) {
         return <h1>Loading meals...</h1>;
     }
 
     return (
-        <div className="FilteredCategory">
-            <h1>Meals</h1>
-            <div className="FilteredCategory-container">
-                {filteredCategory.map((category) => (
+        <div className="FilteredMeal">
+            <h1>Filtered Meals</h1>
+            <div className="FilteredMeal-container">
+                {filteredMeal.map((category) => (
                     <Link
-                        to="/meal"
+                        to="/meal-details"
                         key={category.idMeal}
                         onClick={() => fetchMealDetails(category.idMeal)}
                     >
@@ -31,4 +31,4 @@ const FilteredCategory = () => {
     );
 };
 
-export default FilteredCategory;
+export default FilteredMeal;

@@ -4,13 +4,13 @@ import { useGlobalContext } from "../Context";
 import Navbar from "../components/Navbar";
 import SubHeader from "../components/SubHeader";
 import SearchResults from "../components/SearchResults";
-import FilteredCategory from "../components/FilteredCategory";
+import FilteredMeal from "../components/FilteredMeal";
 import Error from "./Error";
 
 const Category = () => {
-    const { showResults, filteredCategory, loading } = useGlobalContext();
+    const { showResults, filteredMeal, loading } = useGlobalContext();
 
-    if (filteredCategory.length === 0 && !loading) {
+    if (filteredMeal.length === 0 && !loading) {
         return <Error />;
     }
 
@@ -19,7 +19,7 @@ const Category = () => {
             <Navbar />
             <SubHeader />
             {showResults ? <SearchResults /> : ""}
-            <FilteredCategory />
+            <FilteredMeal />
         </div>
     );
 };

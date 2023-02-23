@@ -13,7 +13,7 @@ const SearchResults = () => {
                 <div className="SearchContainer">
                     {searchResult.map((meal) => (
                         <Link
-                            to="/meal"
+                            to="/meal-details"
                             key={meal.idMeal}
                             onClick={() => fetchMealDetails(meal.idMeal)}
                         >

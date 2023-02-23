@@ -4,7 +4,7 @@ import "../index.scss";
 import { useGlobalContext } from "../Context";
 
 const CategoryContainer = () => {
-    const { categories, filterCategory, dispatch } = useGlobalContext();
+    const { categories, filterMeal, dispatch } = useGlobalContext();
 
     return (
         <div className="category-section">
@@ -12,13 +12,13 @@ const CategoryContainer = () => {
             <div className="CategoryContainer">
                 {categories.map((category) => (
                     <Link
-                        to="/category"
+                        to="/category/meals"
                         key={category.idCategory}
                         onClick={() => {
                             dispatch({
                                 type: "CLEAR_SEARCH_RESULTS",
                             });
-                            filterCategory(category.strCategory);
+                            filterMeal(category.strCategory);
                         }}
                     >
                         <div className="Meal-box">

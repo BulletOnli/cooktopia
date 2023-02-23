@@ -5,9 +5,10 @@ const AppContext = React.createContext();
 
 const initialState = {
     categories: [],
-    filteredCategory: [],
+    filteredMeal: [],
     searchResult: [],
     mealDetails: [],
+    favoriteMeals: [],
     showResults: false,
     loading: false,
 };
@@ -37,13 +38,13 @@ const AppProvider = ({ children }) => {
     }
 
     // Function to fetch meals based of category
-    async function filterCategory(category) {
+    async function filterMeal(category) {
         dispatch({ type: "LOADING" });
         const response = await fetch(
             `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
         );
         const data = await response.json();
-        dispatch({ type: "FILTER_CATEGORY", payload: data.meals });
+        dispatch({ type: "FILTER_MEAL", payload: data.meals });
         dispatch({ type: "LOADING" });
     }
 
@@ -55,6 +56,11 @@ const AppProvider = ({ children }) => {
         );
         const data = await response.json();
         dispatch({ type: "FETCH_MEAL_DETAILS", payload: data.meals });
+
+        // To delay the render of the Meal Details
+        setTimeout(() => {
+            dispatch({ type: "LOADING" });
+        }, 500);
     }
 
     useEffect(() => {
@@ -69,7 +75,7 @@ const AppProvider = ({ children }) => {
                 setInputValue,
                 searchMeal,
                 dispatch,
-                filterCategory,
+                filterMeal,
                 fetchMealDetails,
             }}
         >
