@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 import "../index.scss";
 import { useGlobalContext } from "../Context";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 
 const Favorites = () => {
-    const { favoriteMeals, loading } = useGlobalContext();
+    const {
+        favoriteMeals,
+        loading,
+        removeMealFromFavorites,
+        fetchMealDetails,
+    } = useGlobalContext();
 
     if (loading) {
         return <Loader />;
@@ -24,19 +31,26 @@ const Favorites = () => {
                     </h1>
                     <div className="line"></div>
                 </span>
-                {favoriteMeals.map((meal, index) => (
-                    <div className="favorite-box" key={index}>
+                {favoriteMeals.map((meal) => (
+                    <div className="favorite-box" key={nanoid()}>
                         <img src={meal.strMealThumb} alt="Meal img" />
                         <div className="box-details">
-                            <h2>{meal.strMeal}</h2>
+                            <Link
+                                to="/meal-details"
+                                onClick={() => fetchMealDetails(meal.idMeal)}
+                            >
+                                <h2>{meal.strMeal}</h2>
+                            </Link>
                             <h4>Category: {meal.strCategory}</h4>
                             <small>Small description</small>
-
-                            <i
-                                className="fa-solid fa-xmark"
-                                onClick={() => console.log(meal.strMeal)}
-                            />
                         </div>
+                        <i
+                            className="fa-solid fa-xmark"
+                            onClick={() => {
+                                removeMealFromFavorites(meal.idMeal);
+                                console.log(favoriteMeals);
+                            }}
+                        />
                     </div>
                 ))}
             </main>

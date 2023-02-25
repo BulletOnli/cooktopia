@@ -2,10 +2,10 @@ import React from "react";
 import "../index.scss";
 import { useGlobalContext } from "../Context";
 import Navbar from "../components/Navbar";
-import SubHeader from "../components/SubHeader";
 import SearchResults from "../components/SearchResults";
 import FilteredMeal from "../components/FilteredMeal";
 import Error from "./Error";
+import SearchBar from "../components/SearchBar";
 
 const Category = () => {
     const { showResults, filteredMeal, loading } = useGlobalContext();
@@ -17,7 +17,7 @@ const Category = () => {
     return (
         <div className="Category-page">
             <Navbar />
-            <SubHeader />
+            <SearchBar />
             {showResults ? <SearchResults /> : ""}
             <FilteredMeal />
         </div>

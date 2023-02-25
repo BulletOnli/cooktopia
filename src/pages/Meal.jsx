@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../index.scss";
 import { useGlobalContext } from "../Context";
 import Navbar from "../components/Navbar";
@@ -6,15 +7,14 @@ import Loader from "../components/Loader";
 import Error from "./Error";
 
 const Meal = () => {
+    const navigate = useNavigate();
     const { mealDetails, loading, dispatch } = useGlobalContext();
     const ingredientsArray = [];
     const mealTags = [];
 
     if (loading) {
         return <Loader />;
-    }
-
-    if (mealDetails.length === 0 && !loading) {
+    } else if (mealDetails.length === 0 && !loading) {
         return <Error />;
     }
 
@@ -36,29 +36,54 @@ const Meal = () => {
         <div className="Meal-page">
             <Navbar />
             <div className="mealInfo-container">
+                <div className="nav-btns">
+                    <i
+                        className="fa-solid fa-arrow-left"
+                        onClick={() => navigate("/")}
+                    ></i>
+                    <button
+                        onClick={() => {
+                            dispatch({
+                                type: "TOGGLE_FAVORITES",
+                                payload: mealDetails[0].idMeal,
+                            });
+                        }}
+                    >
+                        {mealDetails[0].isFavorited ? (
+                            <>
+                                <i className="fa-solid fa-heart" />
+                                Favorite
+                            </>
+                        ) : (
+                            <>
+                                <i className="fa-regular fa-heart" />
+                                !Favorite
+                            </>
+                        )}
+                    </button>
+                </div>
+
                 <div className="info-header">
                     <div className="meal-details">
                         <h1>{mealDetails[0].strMeal}</h1>
-                        <h4>Category: {mealDetails[0].strCategory}</h4>
-
+                        <h4>
+                            Category: <span>{mealDetails[0].strCategory}</span>
+                        </h4>
                         <div className="tags">
-                            <h4>Tags:</h4>
+                            <h5>Tags:</h5>
                             {mealTags.map((tag, index) => (
                                 <p key={index}>{tag}</p>
                             ))}
                         </div>
-                        <button
-                            onClick={() => {
-                                dispatch({
-                                    type: "TOGGLE_FAVORITES",
-                                    payload: mealDetails[0].idMeal,
-                                });
-                            }}
-                        >
-                            {mealDetails[0].isFavorited
-                                ? "Added to Favorites"
-                                : "Add to Favorites"}
-                        </button>
+                        <h5>
+                            Tutorial:{" "}
+                            <Link
+                                to={mealDetails[0].strYoutube}
+                                target="_blank"
+                            >
+                                {mealDetails[0].strYoutube}
+                            </Link>
+                        </h5>
                     </div>
                     <img src={mealDetails[0].strMealThumb} alt="img" />
                 </div>

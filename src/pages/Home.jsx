@@ -5,8 +5,9 @@ import "../index.scss";
 import Navbar from "../components/Navbar";
 import CategoryContainer from "../components/CategoryContainer";
 import SearchResults from "../components/SearchResults";
-import SubHeader from "../components/SubHeader";
 import Loader from "../components/Loader";
+import SearchBar from "../components/SearchBar";
+import Header from "../components/Header";
 
 const Home = () => {
     const { showResults, loading } = useGlobalContext();
@@ -18,7 +19,8 @@ const Home = () => {
     return (
         <div className="Home">
             <Navbar />
-            <SubHeader />
+            <Header />
+            <SearchBar />
             {showResults ? <SearchResults /> : ""}
             <CategoryContainer />
         </div>

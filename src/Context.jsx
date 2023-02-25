@@ -63,6 +63,13 @@ const AppProvider = ({ children }) => {
         }, 500);
     }
 
+    const removeMealFromFavorites = (id) => {
+        const updatedMeal = state.favoriteMeals.filter(
+            (meal) => meal.idMeal !== id
+        );
+        dispatch({ type: "REMOVE_FROM_FAVORITES", payload: updatedMeal });
+    };
+
     useEffect(() => {
         fetchCategories();
     }, []);
@@ -77,6 +84,7 @@ const AppProvider = ({ children }) => {
                 dispatch,
                 filterMeal,
                 fetchMealDetails,
+                removeMealFromFavorites,
             }}
         >
             {children}

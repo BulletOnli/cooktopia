@@ -45,6 +45,12 @@ const reducer = (state, action) => {
             favoriteMeals: updatedFavorites,
         };
     }
+    if (action.type === "REMOVE_FROM_FAVORITES") {
+        return {
+            ...state,
+            favoriteMeals: action.payload,
+        };
+    }
 };
 
 export default reducer;
