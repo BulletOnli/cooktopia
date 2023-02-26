@@ -11,8 +11,8 @@ const Footer = () => {
                 <a href="https://www.instagram.com/gem.muel/" target="_blank">
                     <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://github.com/BulletOnli">
-                    <i class="fa-brands fa-github" target="_blank"></i>
+                <a href="https://github.com/BulletOnli" target="_blank">
+                    <i class="fa-brands fa-github"></i>
                 </a>
             </div>
         </div>
