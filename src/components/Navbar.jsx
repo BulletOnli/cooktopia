@@ -13,12 +13,24 @@ const Navbar = () => {
                     onClick={() => setIsNavOpen(!isNavOpen)}
                 ></i>
                 <Link to="/" className="logo">
-                    Logo
+                    CookTopia
                 </Link>
                 <span>
-                    <i className="fa-brands fa-facebook"></i>
-                    <i className="fa-brands fa-instagram"></i>
-                    <i className="fa-brands fa-twitter"></i>
+                    <a
+                        href="https://www.facebook.com/Solidbullet"
+                        target="_blank"
+                    >
+                        <i className="fa-brands fa-facebook"></i>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/gem.muel/"
+                        target="_blank"
+                    >
+                        <i className="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/BulletOnli" target="_blank">
+                        <i className="fa-brands fa-twitter"></i>
+                    </a>
                 </span>
             </div>
             <div

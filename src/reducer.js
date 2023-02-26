@@ -28,21 +28,18 @@ const reducer = (state, action) => {
             ...state.mealDetails[0],
             isFavorited: !state.mealDetails[0].isFavorited,
         };
+        const isExisting = state.favoriteMeals.some(
+            (item) => item.strMeal === updatedMeal.strMeal
+        );
+
+        if (isExisting) {
+            return { ...state, mealDetails: [updatedMeal] };
+        }
 
         return {
             ...state,
             mealDetails: [updatedMeal],
             favoriteMeals: [...state.favoriteMeals, updatedMeal],
-        };
-    }
-    if (action.type === "RENDER_FAVORITES") {
-        const updatedFavorites = state.favoriteMeals.filter(
-            (meal) => meal.isFavorited
-        );
-
-        return {
-            ...state,
-            favoriteMeals: updatedFavorites,
         };
     }
     if (action.type === "REMOVE_FROM_FAVORITES") {

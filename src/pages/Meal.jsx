@@ -14,7 +14,9 @@ const Meal = () => {
 
     if (loading) {
         return <Loader />;
-    } else if (mealDetails.length === 0 && !loading) {
+    }
+
+    if (mealDetails.length === 0 && !loading) {
         return <Error />;
     }
 

@@ -5,6 +5,7 @@ import "../index.scss";
 import { useGlobalContext } from "../Context";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
+import Footer from "../components/Footer";
 
 const Favorites = () => {
     const {
@@ -48,12 +49,12 @@ const Favorites = () => {
                             className="fa-solid fa-xmark"
                             onClick={() => {
                                 removeMealFromFavorites(meal.idMeal);
-                                console.log(favoriteMeals);
                             }}
                         />
                     </div>
                 ))}
             </main>
+            <Footer />
         </div>
     );
 };

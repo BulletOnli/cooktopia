@@ -2,7 +2,6 @@
 
 $darkgreen: #006400;
 $secondary-white: #ecedef;
-// #f7f8f3
 
 * {
     padding: 0;
@@ -68,10 +67,13 @@ $secondary-white: #ecedef;
 
     span {
         margin-right: 1rem;
-        i {
-            font-size: 1.3rem;
-            margin: 0 10px;
-            cursor: pointer;
+        a {
+            color: black;
+            i {
+                font-size: 1.2rem;
+                margin: 0 10px;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -122,13 +124,14 @@ $secondary-white: #ecedef;
             margin: 1rem 0;
 
             button {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 font-weight: 700;
                 padding: 7px 1rem;
                 border-radius: 8px;
                 margin: 0 1rem;
                 background-color: #fb8500;
                 transition: 0.4s;
+                box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
                 cursor: pointer;
 
                 &:hover {
@@ -641,6 +644,31 @@ $secondary-white: #ecedef;
                 &:hover {
                     scale: 1.2;
                 }
+            }
+        }
+    }
+}
+
+.Footer {
+    width: 90%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid gray;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .footer-links {
+        a {
+            color: black;
+            i {
+                font-size: 1.2rem;
+                margin: 0 10px;
+                cursor: pointer;
             }
         }
     }

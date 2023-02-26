@@ -8,6 +8,7 @@ import SearchResults from "../components/SearchResults";
 import Loader from "../components/Loader";
 import SearchBar from "../components/SearchBar";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Home = () => {
     const { showResults, loading } = useGlobalContext();
@@ -23,6 +24,7 @@ const Home = () => {
             <SearchBar />
             {showResults ? <SearchResults /> : ""}
             <CategoryContainer />
+            <Footer />
         </div>
     );
 };
