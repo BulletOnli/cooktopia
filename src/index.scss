@@ -132,7 +132,7 @@ $secondary-white: #ecedef;
                 background-color: #fb8500;
                 transition: 0.4s;
                 box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
-                cursor: pointer;
+                cursor: not-allowed;
 
                 &:hover {
                     scale: 1.05;
@@ -262,8 +262,8 @@ $secondary-white: #ecedef;
         }
 
         .Meal-box {
-            width: 13rem;
-            height: 11rem;
+            width: 12.5rem;
+            height: 10rem;
             background-color: white;
             display: flex;
             flex-direction: column;
@@ -278,15 +278,16 @@ $secondary-white: #ecedef;
             }
 
             img {
-                width: 11rem;
+                width: 10rem;
                 aspect-ratio: 3/2;
                 object-fit: cover;
                 border-radius: 7px;
             }
 
             p {
-                margin-top: 5px;
+                margin-top: 7px;
                 font-weight: 500;
+                overflow: hidden;
             }
         }
     }
@@ -397,7 +398,6 @@ $secondary-white: #ecedef;
             align-items: center;
             justify-content: space-between;
             position: relative;
-            // background-color: lightblue;
             margin: 1.5rem 0 10px 0;
 
             .meal-details {
@@ -412,9 +412,9 @@ $secondary-white: #ecedef;
 
                 h4 {
                     font-weight: 700;
+                    font-size: 14px;
 
                     span {
-                        // font-size: 14px;
                         font-weight: 500;
                     }
                 }
@@ -423,7 +423,7 @@ $secondary-white: #ecedef;
                     width: 100%;
                     display: flex;
                     align-items: center;
-                    margin: 5px 0 1rem 0;
+                    margin: 5px 0 5px 0;
 
                     p {
                         margin-left: 5px;
@@ -434,13 +434,13 @@ $secondary-white: #ecedef;
                         );
                         border-radius: 4px;
                         font-weight: 500;
-                        font-size: 13px;
+                        font-size: 14px;
                     }
                 }
 
                 h5 {
                     a {
-                        font-size: 13px;
+                        font-size: 14px;
                         font-weight: 500;
                     }
                 }

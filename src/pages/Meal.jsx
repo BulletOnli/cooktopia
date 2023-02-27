@@ -89,7 +89,9 @@ const Meal = () => {
                     </div>
                     <img src={mealDetails[0].strMealThumb} alt="img" />
                 </div>
+
                 <div className="line"></div>
+
                 <div className="ingredients-container">
                     <h2>Ingredients</h2>
                     <ul>
@@ -98,7 +100,9 @@ const Meal = () => {
                         ))}
                     </ul>
                 </div>
+
                 <div className="line"></div>
+
                 <div className="instructions-container">
                     <h2>Instructions</h2>
                     {instructions.map((instruction, index) => (
