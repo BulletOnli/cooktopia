@@ -21,7 +21,13 @@ const SearchBar = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <i
+                    className="fa-solid fa-magnifying-glass"
+                    onClick={() => {
+                        searchMeal(inputValue);
+                        setInputValue("");
+                    }}
+                />
             </form>
             <h5>Search the recipe of your favorite meal</h5>
         </div>
